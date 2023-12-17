@@ -1,0 +1,386 @@
+main.MuiBox-root.css-1bhfbf6 {
+    margin: 0px;
+    padding-left: 45px;
+    padding-right: 84px;
+    padding-top: 10px;
+}
+
+@media screen and (max-width:992px) {
+    main.MuiBox-root.css-1bhfbf6 {
+        padding-right: 10px;
+    }
+}
+
+.flex_cards {
+    display: flex;
+    justify-content: space-around;
+}
+.card_ {
+    width: 100%;
+
+    border-radius: 10px;
+    position: relative;
+    text-align: left;
+    padding: 40px 20px;
+    padding-bottom: 99px;
+}
+
+.card_ img {
+    position: absolute;
+    top: 59px;
+    right: -21px;
+    bottom: 0;
+}
+
+.card_ h6 {
+    color: #FFF;
+    font-family: 'Poppins';
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+
+}
+
+.card_ h2 {
+    color: #FFF;
+
+    font-family: 'Poppins';
+    font-size: 34px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+@media screen and (max-width:1099px) {
+    .card_ h6 {
+        font-size: 14px;
+    }
+}
+
+.card_one {
+    background: linear-gradient(293deg, #A05AFF 18.16%, rgba(160, 90, 255, 0.50) 100%);
+}
+
+.card_two {
+    background: linear-gradient(293deg, #45A1EB 18.16%, rgba(68, 85, 170, 0.07) 100%);
+}
+
+.card_three {
+    background: linear-gradient(293deg, #74D7CD 18.16%, rgba(116, 215, 205, 0.50) 100%);
+}
+
+.card_four {
+    background: linear-gradient(293deg, rgba(227, 25, 39, 0.50) 18.16%, rgba(227, 25, 39, 0.50) 100%);
+}
+
+.last_week {
+    border-radius: 10px;
+
+    background: #FFF;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+    display: flex;
+    padding: 0;
+
+    padding-bottom: 20px;
+}
+
+@media screen and (max-width:1465px) {
+    .last_week {
+        padding-bottom: 0px;
+    }
+}
+
+.last_week_txt {
+    position: relative;
+    padding: 20px;
+}
+
+.last_week_txt h2 {
+    color: #1E1E1E;
+
+    font-family: 'Poppins';
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 0;
+}
+
+/* @media screen and (max-width:1399px) {
+        .last_week h2{
+            font-size: 22px;
+        }
+    }
+    .last_week_txt{
+        padding: 40px;
+    } */
+
+.last_week p {
+    color: #1E1E1E;
+    font-family: 'Poppins';
+    font-size: 13.453px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22.4px;
+    margin-bottom: 0px;
+}
+
+@media screen and (max-width:1199px) {
+    .last_week p {
+
+        font-size: 9.453px;
+
+        line-height: 19.4px;
+    }
+}
+
+.disc_tags {
+    color: #1E1E1E;
+    display: block;
+    font-family: Poppins;
+    font-size: 11.45px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22.4px;
+}
+
+@media screen and (max-width:1099px) {
+    .last_week_txt {
+        padding: 17px;
+    }
+}
+
+.disc_tags svg {
+    margin-right: 7px;
+}
+
+@media screen and (max-width:1099px) {
+    .disc_tags {
+        font-size: 8.45px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 16.4px;
+    }
+
+    .disc_tags svg {
+        height: 10px !important;
+
+    }
+}
+
+@media screen and (max-width:600px) {
+    main.MuiBox-root.css-1bhfbf6 {
+        padding: 20px;
+    }
+
+    .disc_tags span {
+        font-size: 10px;
+    }
+
+}
+
+/* .disc_svg{
+        position: absolute;
+        top: -91px;
+        right: -97px;
+    
+    } */
+@media screen and (max-width:995px) {
+    .last_week h2 {
+        font-size: 22px;
+    }
+
+    .last_week p {
+        font-size: 12px;
+    }
+
+    .disc_svg svg {
+        width: 180px;
+
+
+    }
+
+    .flex_circle {
+        display: flex;
+
+    }
+}
+
+@media screen and (max-width:767px) {
+    .flex_circle {
+        flex-wrap: wrap;
+    }
+
+    .disc_tags {
+        font-size: 11px !important;
+    }
+
+    .card_ img {
+        right: -15px;
+    }
+}
+
+.flex_circle {
+    display: flex;
+}
+
+.css-66gjpw-MuiResponsiveChart-container {
+    width: auto;
+    height: 125px !important;
+    float: right;
+}
+
+@media screen and (max-width:992px) {
+    .css-66gjpw-MuiResponsiveChart-container {
+        /* float: left; */
+        width: auto !important;
+    }
+}
+
+.css-kso0wp-MuiPieArc-root {
+    fill: #ff7777;
+    ;
+}
+
+.list_sec {
+    border-radius: 10px;
+    background: #FFF;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+    padding: 20px 0;
+    text-align: center;
+}
+
+.list_sec h3 {
+    color: #1E1E1E;
+    font-family: Poppins;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22.4px;
+    /* 124.444% */
+    text-align: left;
+    padding: 10px;
+    padding-left: 20px;
+}
+
+.table {
+    background: #FFF;
+
+}
+
+.table .table_hd {
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+    padding: 20px 30px;
+    background: #EFEFEF;
+    padding: 20px 40px;
+}
+
+.table .table_hd2 {
+
+    text-align: center;
+    padding: 20px 30px;
+    background: #ffff;
+    padding: 20px 40px;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.20);
+}
+
+.table .table_hd h3 {
+    color: #1E1E1E;
+    font-family: 'Poppins';
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22.4px;
+    /* 124.444% */
+
+}
+
+.table .table_hd span {
+    color: rgba(30, 30, 30, 0.55);
+    font-family: 'Poppins';
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 22.4px;
+    /* 160% */
+}
+
+.table_listing div {
+    /* display: flex;
+    justify-content: space-between; */
+    text-align: left;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background: rgba(243, 243, 243, 0.30);
+    margin-top: 2px;
+}
+
+.table_listing ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.table_listing div span:nth-child(1) {
+    color: #1E1E1E;
+    font-family: 'Poppins';
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 22.4px;
+    /* 160% */
+    background: rgba(243, 243, 243, 0.30);
+}
+
+.table_listing div span:nth-child(2) {
+    color: rgba(30, 30, 30, 0.55);
+    font-family: Poppins;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 22.4px;
+    /* 160% */
+    background: rgba(243, 243, 243, 0.30);
+}
+
+.list_2 {
+    padding-bottom: 323px;
+}
+
+.hr_line {
+    width: 100%;
+    border: 1px solid #f77;
+    margin: 20px 0px;
+}
+
+@media screen and (max-width:992px) {
+    .list_2 {
+        margin-top: 10px;
+        padding-bottom: 20px;
+    }
+}
+
+
+
+.expanse {
+
+    color: #E31927 !important;
+    font-family: 'Poppins';
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+    /* line-height: 22.4px; */
+    /* 86.154% */
+}
+
+.css-10vg0a6-MuiResponsiveChart-container {
+    width: auto !important;
+}
+
+@media screen and (max-width:992px) {
+    .daily_expan {
+        margin-top: 15px;
+    }
+}

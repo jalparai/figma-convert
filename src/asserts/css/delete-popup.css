@@ -1,0 +1,178 @@
+.MuiBox-root.css-1wnsr1i {
+    border-radius: 10px;
+    background: #FFF;
+    border: none;
+    height: 345px;
+    overflow: scroll !important;
+}
+.svg_delt{
+    text-align: center;
+}
+.svg_delt span{
+    padding: 20px;
+    background: #fe7f7f;
+    width: 100px;
+    height: 100px;
+    display: block;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    border-radius: 100%;
+    margin-bottom: 13px;
+    position: relative;
+    left: 17px;
+}
+.svg_delt h4{
+    color: rgba(30, 30, 30, 0.55);
+font-family: 'Poppins';
+font-size: 22px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+text-align: center;
+border-bottom: 1px solid #fe7f7f;
+padding-bottom: 10px;
+}
+.svg_delt p{
+    color: rgba(30, 30, 30, 0.55);
+text-align: center;
+font-family: Poppins;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+.delt_appy{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.delt_appy button:nth-child(1){
+    border-radius: 15px;
+    border: 1px solid rgba(227, 25, 39, 0.50);
+    background: #FFF;
+    padding: 7px 30px;
+ color: rgba(227, 25, 39, 0.50);
+font-family: 'Poppins';
+font-size: 14px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+}
+.delt_appy button:nth-child(2){
+    border-radius: 15px;
+    background: rgba(227, 25, 39, 0.50);
+    padding: 7px 30px;    color: #FFF;
+font-family: 'Poppins';
+font-size: 14px;
+border: none;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+}
+.close_btn{
+    border: none;
+    background: none;
+    float: right;
+    position: relative;
+    bottom: 10px;
+}
+.add_option_style h4{
+    color: #F18C93;
+    font-family: 'Poppins';
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.opt_add_main{
+    width: 600px !important;
+    text-align: center;
+}
+@media screen and (max-width:767px) {
+    .opt_add_main{
+        width: 90% !important;
+    }
+}
+.opt_add_main .input{
+    border-radius: 10px;
+    background: #FFF;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+    color: rgba(30, 30, 30, 0.55);
+    font-family: 'Poppins';
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    padding: 7px;
+    width: 90%;
+    border: none;
+    margin-top: 10px;
+}
+.opt_add_main .check_sec{
+    justify-content: start;
+    position: relative;
+    top: 5px;
+}
+.opt_add_main .check_sec label{
+/* margin-left: 7px; */
+color: rgba(30, 30, 30, 0.55);
+font-family: 'Poppins';
+font-size: 14px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
+.opt_add_main .chexkboxsec{
+    position: relative;
+    left: 32px;
+    top: 6px;
+
+}
+.opt_add_main .list_add_sec_language{
+    border-radius: 10px;
+background: #FFF;
+box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+padding: 10px;
+margin: auto;
+width: 90%;
+margin-top: 20px;
+}
+.opt_add_main .list_add_sec_language .input{
+width: auto !important;
+margin-right: 10px;
+}
+
+.opt_add_main .list_add_sec_language button.list_btn_edit_dlt.delt{
+    left: 0px;
+}
+.opt_add_main .btn_to_add_list{
+    border-radius: 10px;
+    background: #F18C93;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+    padding: 7px;
+    color: #FFF;
+    font-family: 'Poppins';
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-align: center;
+    width: 90%;
+    border: none;
+}
+@media screen and (max-width:767px) {
+    .opt_add_main .list_add_sec_language .input {
+width: 100% !important;
+    }
+    .opt_add_main .list_add_sec_language button.list_btn_edit_dlt.delt{
+        top: 4px;
+float: right;    }
+}
+.add_table{
+    margin-right: 10px;
+}
+
+

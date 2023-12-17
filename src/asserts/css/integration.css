@@ -1,0 +1,192 @@
+.match_product {
+    margin-top: 60px;
+}
+
+.match_product p {
+    margin: auto;
+    text-align: center;
+    margin-top: 30px;
+    font-size: 14px;
+}
+
+.hugin_integration {
+    width: 100%;
+    border-bottom: 1px solid #d9d9d9;
+    padding-bottom: 22px;
+}
+
+.hugin_integration .department_code {
+    display: flex;
+    margin-top: 80px;
+    align-items: center;
+}
+
+.hugin_integration .department_code .category {
+    top: 0px;
+    width: 147px;
+}
+
+.hugin_integration .department_code h4 {
+    font-size: 19px;
+    margin-right: 12px;
+    margin-bottom: 0;
+}
+
+.hugin_integration_search {
+    width: 200px;
+    fill: #FFF;
+    filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.25));
+}
+
+.hugin_integration .device_btn {
+    position: absolute;
+    right: 82px;
+    fill: rgba(227, 25, 39, 0.50) !important;
+    filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.25)) !important;
+    background-color: #fe7f7f;
+    border: none;
+    color: #FFF;
+    font-family: 'Poppins';
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding: 14px 20px;
+    border-radius: 10px;
+
+}
+
+.hugin_product_card {
+    fill: #FFF;
+    filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.25));
+background-color: #FFF;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+}
+
+.hugin_product_card h2 {
+    font-size: 18px;
+    color: black;
+    padding: 20px;
+}
+.hugin_product_card h3 {
+    font-size: 14px;
+    color: white;
+    padding: 10px 20px;
+    padding-top: 10px;
+    background-color: #fe7f7f;
+    border-radius: 10px;
+}
+.hugin_product_card h5 {
+    font-size: 12px;
+    color: #fe7f7f;
+    display: inline-block;
+    text-align: center;
+}
+
+.Integrationflex{
+    display: flex;
+    font-size: 12px;
+    color: #FFF;
+    text-align: center;
+    color: rgb(30, 30, 30);
+    justify-content: space-around;
+}
+.Integrationflex span{
+    display: flex;
+}
+.Integrationflex div{
+    display: flex;
+    flex-direction: column;
+}
+.hugin_integration_card{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.device_setting_modal input{
+    border-radius: 10px;
+    background: #FFF;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+    color: rgba(30, 30, 30, 0.55);
+    font-family: 'Poppins';
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    padding: 7px;
+    width: 90%;
+    border: none;
+    margin-top: 10px;
+    margin: auto;
+    margin-bottom: 10px;
+    display: block;
+}
+.device_setting_modal h4{
+    color: #F18C93;
+    font-family: 'Poppins';
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-align: center;
+    margin-bottom: 30px
+}
+
+.device_setting_modal button{
+    border-radius: 10px;
+    background: #F18C93;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+    padding: 7px;
+    color: #FFF;
+    font-family: 'Poppins';
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-align: center;
+    width: 90%;
+    border: none;
+    margin: auto;
+    display: block;
+}
+.device_setting_modal p{
+font-size: 14px;
+text-align: center;
+color: black;
+margin-top: 20px;
+}
+.cancel_btn{
+    border-radius: 10px;
+    background: white;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+    padding: 7px;
+    color: #F18C93;
+    font-family: 'Poppins';
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-align: center;
+    width: 141px;
+ border: none;
+    margin: auto;
+    display: block;
+    position: relative;
+    bottom: -35px;
+}
+.cancel_btn:hover{
+    background: #F18C93;
+    color: #FFF;
+}
+.hugin_product_card_savBtn{
+    display: flex;
+    justify-content: space-evenly;
+}
+.product_card_modal_hugin .MuiBox-root.css-1wnsr1i{
+height: 440px;
+overflow: scroll;
+}

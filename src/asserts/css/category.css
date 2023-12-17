@@ -1,0 +1,114 @@
+.css-1ndpvdd-MuiTableCell-root{
+    color: #1E1E1E !important;
+    font-family: 'Poppins' !important;
+    font-size: 16px !important;
+    font-style: normal !important;
+    font-weight: 600 !important;
+}
+th.MuiTableCell-root.MuiTableCell-head.MuiTableCell-alignCenter.MuiTableCell-sizeMedium.css-1ndpvdd-MuiTableCell-root{
+    width: 200px;
+}
+.category_img{
+    margin-right: 20px;
+}
+.category_row .setting_list {
+justify-content: center;
+}
+.css-1yhpg23-MuiTableCell-root{    width: 300px;
+    color: rgba(30, 30, 30, 0.55) !important;
+    font-family: 'Poppins' !important;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 600 !important;
+    line-height: normal;
+}
+.title_tag{
+    color: #000;
+font-family: 'Poppins';
+font-size: 16px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+position: relative;
+top: 15px;
+}
+.edit_rant_btn{
+    margin-right: 20px;
+}
+.edit_rant_btn2{
+    margin-right: 50px;
+}
+.add_cat_opt{
+    margin-right: 60px;
+}
+
+.cate_img img{
+    border: 100%;
+    width: 100px;
+    height: 100px;
+    margin: auto;
+    display: block;
+}
+.cate_img button{
+    border: none;
+    background-color: white;
+    position: relative;
+    top: 33px;
+    right: 2px;
+}
+.cateory_add_field{
+    border-bottom:1px solid #D9D9D9 ;
+    padding-bottom: 20px;
+}
+.file-input-container input[type="file"] {
+
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: 98px;
+    width: 130px;
+    opacity: 0;
+  }
+  
+  .file-input-container__file-selector-button {
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .file-input-container img{
+    display: block;
+    margin: auto;
+    border-radius: 100%;
+    /* margin-top: 15px; */
+  }
+  .category_input_edit{
+    opacity: 0;
+    cursor: pointer;
+    top: -36px;
+    position: relative;
+  }
+  .file-input-container svg{
+    position: relative;
+    bottom: 27px;
+    left: 58px;
+  }
+  .edit_cat_svg_icon{
+    position: relative;
+    top: -42px;
+    right: -242px;
+  }
+  @media screen and (max-width:450px) {
+    .edit_cat_svg_icon{
+        right: -79px;
+    }
+    .category_input_edit{
+        top: -62px;
+    }
+  }
+  /* td.MuiTableCell-root.MuiTableCell-body.MuiTableCell-alignCenter.MuiTableCell-sizeMedium.css-1yhpg23-MuiTableCell-root{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+} */
