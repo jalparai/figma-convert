@@ -23,6 +23,7 @@ import MatchProduct from './pages/integration/MatchProduct';
 import MatchOption from './pages/integration/MatchOption';
 import HuginIntegration from './pages/integration/HuginIntegration';
 import EditRankProduct from './pages/edit-rank-product/editRankProduct';
+import ReceiptList from './components/case-ReceiptList';
 
 function App() {
   return (
@@ -51,6 +52,8 @@ function App() {
         <Route path="/match-product" element={<Layout><MatchProduct /></Layout>} />
         <Route path="/match-option" element={<Layout><MatchOption /></Layout>} />
         <Route path="/hugin-integration" element={<Layout><HuginIntegration /></Layout>} />
+        <Route path="/receipt-list" element={<Layout><ReceiptList /></Layout>} />
+
       </Routes>
     </Router>
   );

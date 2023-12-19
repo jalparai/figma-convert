@@ -42,12 +42,15 @@ const Casestable = ({ cases }: {cases: any[]}) => {
                 <TableCell align="left">10 Ağustos 2023 12:56</TableCell>
                 <TableCell align="left">10 Ağustos 2023 12:56</TableCell>
 
+              
                 <TableCell align="left">
-                  <div className="cases_status">
-                    <span className="status">{el.is_open? "Open": "Close"}</span>
-                    <button onClick={() => handleButtonClick(el._id)}>Select</button>
-                  </div>
-                </TableCell>
+  <div className="cases_status">
+    <span className={`status ${el.is_open ? "open" : "close"}`}>
+      {el.is_open ? "Open" : "Close"}
+    </span>
+    <button onClick={() => handleButtonClick(el._id)}>Select</button>
+  </div>
+</TableCell>
               </TableRow>
             ))
           )}

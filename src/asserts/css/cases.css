@@ -179,3 +179,24 @@ font-style: normal;
 font-weight: 500;
 line-height: normal;
 }
+.status {
+    padding: 4px 8px;
+    border-radius: 4px;
+    color: #fff;
+  }
+  
+  .cases_status .open {
+    background-color: #17E15C !important ; /* or any color you want for open cases */
+  }
+  
+ .cases_status .close {
+    background-color: red !important; /* or any color you want for closed cases */
+  }
+  .receipt_list {
+height:     633px !important
+;
+}
+.receipt_list_table .css-1ygcj2i-MuiTableCell-root {
+padding: 16px 10px;
+font-size: 14px !important;
+}

@@ -94,7 +94,7 @@ const Product = () => {
                 />
               </svg>
             </Button>
-            <Button size="lg" className="product_add" onClick={handleClick}>
+            <Button size="lg" className="product_add" onClick={handleClick} style={{marginLeft:'5px'}}>
             {t('editRankButtonText')}
             </Button>
           </div>

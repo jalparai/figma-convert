@@ -94,7 +94,8 @@ i18n.use(initReactI18next).init({
     openingDate:'OPENING DATE',
     status:'Status',
     caseList:"Case List",
-    employee:"Employee"
+    employee:"Employee",
+    addCategory :"Add Category"
       },
     },
     tr: {
@@ -183,7 +184,8 @@ unlimitedChoice: "Sınırsız Seçenek",
     updateDate:'GÜNCELLEME TARİHİ',
     status:'Durum',
     caseList:"Vaka Listesi",
-    employee:"ÇALIŞAN"
+    employee:"ÇALIŞAN",
+    addCategory :"Kategori ekle "
 
       },
     },
@@ -273,7 +275,9 @@ caseSale: "بيع الحالة",
     updateDate:'تاريخ التحديث',
     status:'الحالة',
     caseList:"قائمة الحالات",
-    employee:'موظف'
+    employee:'موظف',
+    addCategory :"إضافة فئة"
+
       },
     },
   },
