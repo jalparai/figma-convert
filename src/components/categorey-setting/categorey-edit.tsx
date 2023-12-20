@@ -5,9 +5,9 @@ import { useFormik } from "formik";
 
 import "../../asserts/css/product.css";
 import "../../asserts/css/delete-popup.css";
-import Img from "../../asserts/imgs/category.png";
 import { getCategoryById, updateCategoryById } from "../../pages/categorey/api";
 import { getAllCategories } from "../../pages/add-product/api";
+
 const style = {
   position: "absolute" as "absolute",
   top: "50%",
@@ -19,28 +19,7 @@ const style = {
   boxShadow: 24,
   p: 4,
 };
-// interface Category {
-//   _id?: string;
-//   title?: string;
-//   image?: string;
-//   branch?: string;
-// }
-// interface Locale {
-//   lang: string,
-//   _id: string,
-//   title: string,
-//   items: any[],
-// }
 
-// interface Payload {
-//   category: Category,
-//   lang: {
-//     _id?: string;
-//     locale: Locale[];
-//     type: number;
-//     itemId: string;
-//   };
-// }
 interface Category {
   id: string;
   title: string;
@@ -56,37 +35,17 @@ const CategoryEdit: React.FC<{ categoryId: string }> = ({ categoryId }) => {
   const [data, setData] = React.useState<any>();
   const [categories, setCategories] = React.useState<Category[]>([]);
 
-  const initialState: any = {
-    category: {
-      _id: data?._id,
-      title: data?.title,
-      image: data?.image,
-      branch: data?.branch,
-      parent_category: data?.parent_category,
-      imageFile: null as File | null,
-      locale: [
-        {
-          lang: "en",
-          title: "",
-          items: [],
-        },
-      ]
-    },
-    lang: {
-      locale: [
-        {
-          lang: "",
-          title: "",
-          items: [],
-        },
-      ],
-    },
-  };
 
   const formik = useFormik({
-    initialValues: initialState,
+    initialValues: {
+      imageFile: "",
+      category: {
+        title: "",
+        parent_category: ""
+      }
+    } as any,
     onSubmit: async (values) => {
-      await updateCategoryById(categoryId, values.category)
+      await updateCategoryById(categoryId, values);
       handleClose();
     },
     enableReinitialize: true,
@@ -153,9 +112,9 @@ const CategoryEdit: React.FC<{ categoryId: string }> = ({ categoryId }) => {
             <div className="add_option_style">
               <h4>Edit Category</h4>
               <div className="cate_img">
-                {formik.values.imageFile ? (
+                {formik.values?.imageFile ? (
                   <img
-                    src={URL.createObjectURL(formik.values.imageFile)}
+                    src={URL.createObjectURL(formik.values?.imageFile)}
                     alt="Preview"
                     style={{ maxWidth: "100px", maxHeight: "100px" }}
                   />
@@ -176,7 +135,10 @@ const CategoryEdit: React.FC<{ categoryId: string }> = ({ categoryId }) => {
                         "imageFile",
                         event.currentTarget.files[0]
                       );
-                      formik.setFieldValue('category.image', event.currentTarget.files[0]);
+                      formik.setFieldValue(
+                        "category.image",
+                        event.currentTarget.files[0]
+                      );
                     }
                   }}
                 />{" "}
@@ -191,7 +153,7 @@ const CategoryEdit: React.FC<{ categoryId: string }> = ({ categoryId }) => {
                   id="title"
                   name="category.title"
                   onChange={formik.handleChange}
-                  value={formik.values.category.title}
+                  value={formik.values?.category.title}
                   placeholder="category Tilte"
                   className="input"
                 />
@@ -201,7 +163,7 @@ const CategoryEdit: React.FC<{ categoryId: string }> = ({ categoryId }) => {
               <select
                 name="category.parent_category"
                 id="categories"
-                value={formik.values.category.parent_category}
+                value={formik.values?.category.parent_category}
                 className="add_language"
               >
                 {categories.map((cat: Category) => (
@@ -220,3 +182,32 @@ const CategoryEdit: React.FC<{ categoryId: string }> = ({ categoryId }) => {
 };
 
 export default CategoryEdit;
+
+// const x = {
+//   category: {
+//     _id: "656bb631f07b5a2b78e68316",
+//     is_sub_category: true,
+//     title: "Green",
+//     image:
+//       "https://api.digigarson.org/Images/632427b087113b5ddaecac66/category/656bb631f07b5a2b78e68316.png",
+//     parent_category: "64ea0e244d2b970a977ad432",
+//     branch: "632427b087113b5ddaecac66",
+//     rank: 14,
+//     createdAt: "2023-12-02T22:56:49.237Z",
+//     updatedAt: "2023-12-15T07:41:05.748Z",
+//     slug: "green",
+//   },
+//   lang: {
+//     _id: "656bb631f07b5a2b78e6831b",
+//     locale: [
+//       {
+//         lang: "en",
+//         _id: "656bb631f07b5a2b78e6831c",
+//         title: "Green",
+//         items: [],
+//       },
+//     ],
+//     type: 2,
+//     itemId: "656bb631f07b5a2b78e68316",
+//   },
+// };

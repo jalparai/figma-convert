@@ -6,7 +6,7 @@ import "../../asserts/css/delete-popup.css";
 import Form from "react-bootstrap/Form";
 // import DeleteMod from './delete-btn';
 import { useState } from "react";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 
 import {
   addNewOption,
@@ -51,7 +51,6 @@ interface AllProducts {
   id: string;
   name: string;
 }
-
 
 interface IOptionEditProps {
   optionId?: string;
@@ -128,6 +127,7 @@ const OptionEdit: React.FC<IOptionEditProps> = ({ optionId }) => {
       console.log("=== err ===", err);
     } finally {
       setLoading(false);
+      handleClose()
     }
   };
 
@@ -230,7 +230,7 @@ const OptionEdit: React.FC<IOptionEditProps> = ({ optionId }) => {
           </button>
 
           <div className="add_option_style">
-            <h4>   {t('editOption')}</h4>
+            <h4> {t("editOption")}</h4>
 
             <select
               name="Categories"
@@ -239,7 +239,7 @@ const OptionEdit: React.FC<IOptionEditProps> = ({ optionId }) => {
               value={locale[0].lang}
               onChange={(e) => setType(e.target.value)}
             >
-              <option value="">{t('categories')}</option>
+              <option value="">{t("categories")}</option>
               <option value="en">English</option>
               <option value="tr">Turkish</option>
             </select>
@@ -248,7 +248,7 @@ const OptionEdit: React.FC<IOptionEditProps> = ({ optionId }) => {
               name="name"
               id="name"
               value={locale[0].name}
-              placeholder= {t('name')}
+              placeholder={t("name")}
               className="input"
               onChange={(e) => handleLocale("name", e.target.value, 0)}
             />
@@ -257,7 +257,7 @@ const OptionEdit: React.FC<IOptionEditProps> = ({ optionId }) => {
               name="special_name"
               id="special_name"
               value={locale[0].special_name}
-              placeholder={t('specialName')}
+              placeholder={t("specialName")}
               className="input"
               onChange={(e) => handleLocale("special_name", e.target.value, 0)}
             />
@@ -267,7 +267,7 @@ const OptionEdit: React.FC<IOptionEditProps> = ({ optionId }) => {
                   <div className="d-flex m-auto ">
                     <Form.Check
                       type="checkbox"
-                      label= {t('productBased')}
+                      label={t("productBased")}
                       onChange={(e) => setProductBased(e.target.checked)}
                     />
                   </div>
@@ -280,7 +280,7 @@ const OptionEdit: React.FC<IOptionEditProps> = ({ optionId }) => {
                   <div className="d-flex m-auto check_sec">
                     <Form.Check
                       type="checkbox"
-                      label={t('unlimitedChoice')}
+                      label={t("unlimitedChoice")}
                       onChange={(e) => setUnlimitedChoice(e.target.checked)}
                     />
                   </div>
@@ -304,11 +304,11 @@ const OptionEdit: React.FC<IOptionEditProps> = ({ optionId }) => {
                 id=""
                 className="add_language"
                 onChange={async (e) => {
-                  setProduct(e.target.value)
-                  await getAllOptions(setData)
+                  setProduct(e.target.value);
+                  await getAllOptions(setData);
                   // const xy = getOptionByIdss(e.target.value)
                   // console.log(xy)
-                  console.log(data)
+                  console.log(data);
                   // setLimit(getChooseLimitById(allProducts, e.target.value))
                 }}
               >
@@ -323,7 +323,7 @@ const OptionEdit: React.FC<IOptionEditProps> = ({ optionId }) => {
                     <div key={index} className="list_add_sec_language">
                       <input
                         type="text"
-                        placeholder={t('name')}
+                        placeholder={t("name")}
                         className="input"
                         value={item.item_name}
                         onChange={(e) =>
@@ -333,7 +333,7 @@ const OptionEdit: React.FC<IOptionEditProps> = ({ optionId }) => {
                       />
                       <input
                         type="text"
-                        placeholder= {t('price')}
+                        placeholder={t("price")}
                         className="input"
                         value={item.price}
                         onChange={(e) =>
@@ -361,12 +361,15 @@ const OptionEdit: React.FC<IOptionEditProps> = ({ optionId }) => {
                   </>
                 ))}
                 <button className="add_languages mt-2" onClick={handleAddItem}>
-                {t('add')}
+                  {t("add")}
                 </button>
               </>
             )}
 
-            <button className="btn_to_add_list mt-3"> {t('addLanguage')}</button>
+            <button className="btn_to_add_list mt-3">
+              {" "}
+              {t("addLanguage")}
+            </button>
             {/* {items.map((item, index) => (
               <div key={index} className="list_add_sec_language">
                 <input
@@ -412,7 +415,7 @@ const OptionEdit: React.FC<IOptionEditProps> = ({ optionId }) => {
           </div>
           {/* Move the closing tag for <Box> outside of add_option_style */}
           <button className="saved_product" onClick={handleSave}>
-          {t('save')}
+            {t("save")}
           </button>
         </Box>
       </Modal>

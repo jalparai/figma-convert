@@ -8,8 +8,8 @@ import { useState, ChangeEvent, useEffect } from "react";
 import { getAllCategories } from "../pages/product/api";
 import { showErrorMsg, showSuccessMsg } from "../utils/notifications";
 import { useNavigate } from "react-router-dom";
-import DummyProduct from '../asserts/imgs/images.png';
-import { useTranslation } from 'react-i18next';
+import DummyProduct from "../asserts/imgs/images.png";
+import { useTranslation } from "react-i18next";
 
 const style = {
   position: "absolute" as "absolute",
@@ -43,8 +43,7 @@ interface CategoryPayload {
 }
 
 export default function CategoryAdd() {
-  const navigate = useNavigate()
-  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const initialPayload: CategoryPayload = {
     category: {
@@ -83,7 +82,7 @@ export default function CategoryAdd() {
     }));
   };
   const handleParentCategoryChange = (newParentCategory: string) => {
-    console.log(newParentCategory)
+    console.log(newParentCategory);
     setProduct((prevPayload) => ({
       ...prevPayload,
       category: {
@@ -113,25 +112,6 @@ export default function CategoryAdd() {
       },
     }));
   };
-  // Update image function
-  // const handleImageChange = (event: ChangeEvent<HTMLInputElement>) => {
-  //   const file = event.target.files?.[0];
-
-  //   if (file) {
-  //     // Assuming the image as a base64 string
-  //     const reader = new FileReader();
-  //     reader.onloadend = () => {
-  //       setProduct((prevPayload) => ({
-  //         ...prevPayload,
-  //         category: {
-  //           ...prevPayload.category,
-  //           image: reader.result as string,
-  //         },
-  //       }));
-  //     };
-  //     reader.readAsDataURL(file);
-  //   }
-  // };
 
   const handleImageChange = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -151,35 +131,30 @@ export default function CategoryAdd() {
     }
   };
 
-
-  
-
   const handleSave = async () => {
     const response = await addNewCategory(product);
     if (response.response) {
-      if(response?.response?.status === 400) {
-        showErrorMsg('Please fill all required fields');
-      }else {
+      if (response?.response?.status === 400) {
+        showErrorMsg("Please fill all required fields");
+      } else {
         showErrorMsg(response.message);
       }
-    }else if (response?.data){
-      showSuccessMsg('Category added successfully');
-      navigate('/category');
-      
-    }else {
-      showErrorMsg('Something went wrong');
+    } else if (response?.data) {
+      showSuccessMsg("Category added successfully");
+      navigate("/category");
+    } else {
+      showErrorMsg("Something went wrong");
     }
-    
-  
+
     handleClose();
-    window.location.reload()
+    window.location.reload();
   };
 
-  useEffect(()=> {
-    getAllCategories(setCategories)
-  }, [])
-// img
-const { t } = useTranslation();
+  useEffect(() => {
+    getAllCategories(setCategories);
+  }, []);
+  // img
+  const { t } = useTranslation();
 
   return (
     <div>
@@ -187,7 +162,7 @@ const { t } = useTranslation();
         className="product_add add_opt_btn add_cat_opt"
         onClick={handleOpen}
       >
-  {t('addCategory')}
+        {t("addOption")}
 
         <svg
           width="24"
@@ -226,49 +201,67 @@ const { t } = useTranslation();
             </svg>
           </button>
           <div className="add_option_style">
-            <h4>  {t('addCategory')}
-</h4>
+            <h4> {t("addOption")}</h4>
             <div className="cate_img">
-            {/* {product.category.image && (
+              {/* {product.category.image && (
               <img
                 src={product.category.image}
                 alt="Selected"
                 style={{ maxWidth: "100px" }}
               />
             )} */}
-            <div className="file-input-container">
-              <input
-                type="file"
-                id="imageInput"
-                onChange={(e) => {
-                  handleImageChange(e);
-                }}
-              />
-              <label
-                htmlFor="imageInput"
-                className="file-input-container__file-selector-button"
-              >
-                {product.category.image ? (
-                  <img
-                    src={product.category.image}
-                    alt="Selected File"
-                    className="file-input-container__icon"
-                  />
-                ) : (
-                  <img
-                    src={DummyProduct}
-                    alt="Default File"
-                    className="file-input-container__icon"
-                  />
-                )}
-<svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M4 5H3C2.46957 5 1.96086 5.21071 1.58579 5.58579C1.21071 5.96086 1 6.46957 1 7V16C1 16.5304 1.21071 17.0391 1.58579 17.4142C1.96086 17.7893 2.46957 18 3 18H12C12.5304 18 13.0391 17.7893 13.4142 17.4142C13.7893 17.0391 14 16.5304 14 16V15" stroke="#1E1E1E" stroke-opacity="0.55" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M13 3.00011L16 6.00011M17.385 4.58511C17.7788 4.19126 18.0001 3.65709 18.0001 3.10011C18.0001 2.54312 17.7788 2.00895 17.385 1.61511C16.9912 1.22126 16.457 1 15.9 1C15.343 1 14.8088 1.22126 14.415 1.61511L6 10.0001V13.0001H9L17.385 4.58511Z" stroke="#1E1E1E" stroke-opacity="0.55" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-
-              </label>
+              <div className="file-input-container">
+                <input
+                  type="file"
+                  id="imageInput"
+                  onChange={(e) => {
+                    handleImageChange(e);
+                  }}
+                />
+                <label
+                  htmlFor="imageInput"
+                  className="file-input-container__file-selector-button"
+                >
+                  {product.category.image ? (
+                    <img
+                      src={product.category.image}
+                      alt="Selected File"
+                      className="file-input-container__icon"
+                    />
+                  ) : (
+                    <img
+                      src={DummyProduct}
+                      alt="Default File"
+                      className="file-input-container__icon"
+                    />
+                  )}
+                  <svg
+                    width="19"
+                    height="19"
+                    viewBox="0 0 19 19"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M4 5H3C2.46957 5 1.96086 5.21071 1.58579 5.58579C1.21071 5.96086 1 6.46957 1 7V16C1 16.5304 1.21071 17.0391 1.58579 17.4142C1.96086 17.7893 2.46957 18 3 18H12C12.5304 18 13.0391 17.7893 13.4142 17.4142C13.7893 17.0391 14 16.5304 14 16V15"
+                      stroke="#1E1E1E"
+                      stroke-opacity="0.55"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M13 3.00011L16 6.00011M17.385 4.58511C17.7788 4.19126 18.0001 3.65709 18.0001 3.10011C18.0001 2.54312 17.7788 2.00895 17.385 1.61511C16.9912 1.22126 16.457 1 15.9 1C15.343 1 14.8088 1.22126 14.415 1.61511L6 10.0001V13.0001H9L17.385 4.58511Z"
+                      stroke="#1E1E1E"
+                      stroke-opacity="0.55"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </label>
+              </div>
             </div>
-          </div>
             <div className="cateory_add_field">
               <select
                 name="languageSelect"
@@ -311,4 +304,4 @@ const { t } = useTranslation();
     </div>
   );
 }
-//  export default 
+//  export default
