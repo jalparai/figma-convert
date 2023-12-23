@@ -2,7 +2,7 @@ import { toast } from "react-toastify";
 import api from "../../../utils/axios";
 import { URLS } from "../../../utils/constants";
 
-export const getAllCategories = async (setCategories: any) => {
+export const getAllCategories = async () => {
   try {
     const response = await api.get(URLS.categories.getAll);
     const data = response?.data.map((ele: any) => {
@@ -15,7 +15,7 @@ export const getAllCategories = async (setCategories: any) => {
         createdAt: ele.createdAt,
       };
     });
-    setCategories(data);
+    return data;
   } catch (err) {}
 };
 
@@ -27,11 +27,11 @@ export const addNewCategory: any = async (payload: Object) => {
   }
 };
 
-export const getCategoryById: any = async (id: string, setData: any) => {
+export const getCategoryById: any = async (id: string) => {
   try {
       const response = await api.get(URLS.categories.get(id));
-      setData(response.data)
 
+      return response.data;
   } catch (err) {
       return err;
   }

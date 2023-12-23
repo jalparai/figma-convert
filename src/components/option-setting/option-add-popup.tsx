@@ -170,7 +170,10 @@ const OptionAdd = () => {
   };
 
   useEffect(() => {
-    getAllCategories(setCategories);
+    (async function(){
+      const allCat = await getAllCategories();
+      setCategories(allCat)
+    })()
     getAllAllergen(setAllAllergens);
   }, []);
 

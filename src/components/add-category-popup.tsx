@@ -151,7 +151,11 @@ export default function CategoryAdd() {
   };
 
   useEffect(() => {
-    getAllCategories(setCategories);
+    async function fetchData() {
+      const allCat = await getAllCategories();
+      setCategories(allCat);
+    }
+    fetchData();
   }, []);
   // img
   const { t } = useTranslation();

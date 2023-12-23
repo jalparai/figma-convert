@@ -67,7 +67,10 @@ const Product = () => {
 
   useEffect(() => {
     getAllProducts(setData);
-    getAllCategories(setCategories);
+    (async () => {
+      const allCat = await getAllCategories();
+      setCategories(allCat)
+    })()
   }, [data]);
 
   return (

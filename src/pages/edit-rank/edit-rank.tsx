@@ -51,7 +51,10 @@ const EditRank = () => {
   };
 
   useEffect(() => {
-    getAllCategories(setCategories)
+    (async function(){
+      const allCat = await getAllCategories();
+      setCategories(allCat)
+    })()
     return () => {}
   }, [])
 

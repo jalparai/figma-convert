@@ -245,7 +245,10 @@ const ProductAdd = () => {
   };
 
   useEffect(() => {
-    getAllCategories(setCategories);
+    (async function(){
+      const allCat = await getAllCategories();
+      setCategories(allCat)
+    })()
     getAllAllergen(setAllAllergens);
   }, []);
   const { t } = useTranslation();

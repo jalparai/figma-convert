@@ -132,7 +132,10 @@ const OptionEdit: React.FC<IOptionEditProps> = ({ optionId }) => {
   };
 
   useEffect(() => {
-    getAllCategories(setCategories);
+    (async function(){
+      const allCat = await getAllCategories();
+      setCategories(allCat)
+    })()
     getAllAllergen(setAllAllergens);
   }, []);
   useEffect(() => {

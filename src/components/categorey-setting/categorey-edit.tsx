@@ -28,36 +28,102 @@ interface Category {
   image: string;
   createdAt: string;
 }
+interface FormValues {
+  imageFile: File | null;
+  category: {
+    title: string;
+    parent_category: string;
+  };
+  lang: {
+    locale: any[];
+  };
+}
 const CategoryEdit: React.FC<{ categoryId: string }> = ({ categoryId }) => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const [data, setData] = React.useState<any>();
   const [categories, setCategories] = React.useState<Category[]>([]);
-
+  const [formValues, setFormValues] = React.useState<FormValues>({
+    imageFile: null,
+    category: {
+      title: "",
+      parent_category: "",
+    },
+    lang: {
+      locale: [],
+    },
+  });
 
   const formik = useFormik({
-    initialValues: {
-      imageFile: "",
-      category: {
-        title: "",
-        parent_category: ""
-      }
-    } as any,
+    initialValues: formValues,
     onSubmit: async (values) => {
+      console.log("values", values);
       await updateCategoryById(categoryId, values);
       handleClose();
     },
     enableReinitialize: true,
   });
-  const fetchCategories = async () => {
-    await getAllCategories(setCategories);
-  };
+  // const fetchCategories = async () => {
+  //   const allCategories = await getAllCategories();
+  //   setData(allCategories)
+  // };
+  // const fetchCategory = async (catId: string) => {
+  //   const responseData = await getCategoryById(catId);
+  //   console.log("responseData", responseData);
+  //   setData(responseData);
+  //   formik.setValues({
+  //     ...formik.values,
+  //     category: responseData,
+  //     lang: { locale: [{ title: responseData.title, lang: "en" }] },
+  //   });
+  // };
+
+  // const handleAddLanguage = async () => {
+  //   setFormValues((prevValues: any) => ({
+  //     ...prevValues,
+  //     lang: {
+  //       ...prevValues.lang,
+  //       locale: [...prevValues.lang.locale, { title: "", lang: "en" }],
+  //     },
+  //   }));
+  //   formik.setFieldValue("lang.locale[-1].title", "");
+  // };
   React.useEffect(() => {
-    getCategoryById(categoryId, setData);
-    fetchCategories();
-    return () => {};
+    const fetchData = async () => {
+      const category = await getCategoryById(categoryId);
+      const allCategories = await getAllCategories();
+      setData(category);
+      // setFormValues({
+      //   category,
+      //   lang: { locale: [{ title: category.title, lang: "en" }] },
+      // });
+      // formik.setValues({
+      //   ...formik.values,
+      //   category: category,
+      //   lang: { locale: [{ title: category.title, lang: 'en' }] },
+      // });
+      setCategories(allCategories);
+    };
+    fetchData();
   }, []);
+
+  const handleAddLanguage = () => {
+    setFormValues((prevValues: any) => ({
+      ...prevValues,
+      lang: {
+        ...prevValues.lang,
+        locale: [...prevValues.lang.locale, { title: "", lang: "en" }],
+      },
+    }));
+    // Focus on the newly added language input
+    // const lastInput = document.querySelector(
+    //   `[name="lang.locale[${formik.values.lang.locale.length - 1}].title"]`
+    // );
+    // if (lastInput) {
+    //   lastInput?.focus();
+    // }
+  };
 
   return (
     <div>
@@ -144,30 +210,59 @@ const CategoryEdit: React.FC<{ categoryId: string }> = ({ categoryId }) => {
                 />{" "}
               </div>
               <div className="cateory_add_field">
-                <select name="Categories" id="" className="add_language">
-                  <option value="English">English</option>
-                  <option value="English">English</option>
+                <select name="language" id="language" className="add_language">
+                  <option value="en">English</option>
+                  <option value="tr">Turkish</option>
                 </select>
                 <input
                   type="text"
                   id="title"
                   name="category.title"
                   onChange={formik.handleChange}
-                  value={formik.values?.category.title}
+                  value={formik.values?.category?.title}
                   placeholder="category Tilte"
                   className="input"
                 />
               </div>
+              {formValues.lang?.locale.length > 1 &&
+                formik.values.lang.locale.map((lang: any, index: number) => (
+                  <div className="cateory_add_field">
+                    <select
+                      name="language"
+                      id="language"
+                      className="add_language"
+                    >
+                      <option value="en">English</option>
+                      <option value="tr">Turkish</option>
+                    </select>
+                    <input
+                      type="text"
+                      id={`category[${index + 1}].title`}
+                      name={`category[${index + 1}].title`}
+                      onChange={formik.handleChange}
+                      value={formik.values?.lang.locale[index + 1]?.title}
+                      placeholder="Category Tilte"
+                      className="input"
+                    />
+                  </div>
+                ))}
 
-              <button className="btn_to_add_list mt-3">Add Language</button>
+              <button
+                className="btn_to_add_list mt-3"
+                type="button"
+                onClick={handleAddLanguage}
+              >
+                Add Language
+              </button>
               <select
                 name="category.parent_category"
                 id="categories"
-                value={formik.values?.category.parent_category}
+                value={formik.values?.category?.parent_category}
                 className="add_language"
+                onChange={formik.handleChange}
               >
                 {categories.map((cat: Category) => (
-                  <option value={cat.id}>{cat.title}</option>
+                  <option value={cat?.id}>{cat?.title}</option>
                 ))}
               </select>
             </div>

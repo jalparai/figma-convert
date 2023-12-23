@@ -52,7 +52,8 @@ const Options = () => {
     const fetchData = async () => {
       try {
         await getAllOptions(setData);
-        await getAllCategories(setCategories);
+        const allCAt = await getAllCategories();
+        setCategories(allCAt);
       } catch (error) {
         console.error("Error fetching data:", error);
         // Handle error appropriately, e.g., show a user-friendly message

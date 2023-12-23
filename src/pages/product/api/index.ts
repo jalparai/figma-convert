@@ -29,7 +29,7 @@ export const updateProductSettingAPI = async (id: string, status: boolean) => {
   } catch (err) {}
 };
 
-export const getAllCategories = async (setCategories: any) => {
+export const getAllCategories = async () => {
   try {
     const response = await api.get(URLS.categories.getAll);
     const data = response?.data.map((ele: any) => {
@@ -40,6 +40,6 @@ export const getAllCategories = async (setCategories: any) => {
         rank: ele.rank,
       };
     });
-    setCategories(data);
+    return data;
   } catch (err) {}
 };

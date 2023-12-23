@@ -277,8 +277,11 @@ const EditProduct = () => {
   };
 
   useEffect(() => {
+    (async function(){
+      const allCat = await getAllCategories();
+      setCategories(allCat)
+    })()
     getProductById(id, setCurrentData);
-    getAllCategories(setCategories);
     getAllAllergen(setAllAllergens);
   }, []);
 

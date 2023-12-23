@@ -50,11 +50,13 @@ const Category = () => {
 
   const handleUpdateProduct = async (id: string, status: boolean) => {
     // await updateProductSettingAPI(id, status);
-    await getAllCategories(setData);
+    const allCat = await getAllCategories();
+    setData(allCat)
   };
 
-  const fetchData = () => {
-    getAllCategories(setData);
+  const fetchData = async () => {
+    const allCat = await getAllCategories();
+    setData(allCat)
   };
 
   useEffect(() => {
