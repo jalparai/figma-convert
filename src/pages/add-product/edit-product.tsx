@@ -5,6 +5,8 @@ import ProductImg from "../../asserts/imgs/not-available.png";
 import "../../asserts/css/add-product.css";
 import AddOpt from "../../components/add-option-modal";
 import { useState } from "react";
+import { useTranslation } from 'react-i18next';
+
 import {
   addNewProduct,
   getAllAllergen,
@@ -288,19 +290,20 @@ const EditProduct = () => {
   useEffect(() => {
     setAllContent();
   }, [curentData]);
+  const { t } = useTranslation();
 
   return (
     <>
       <div>
         <div className="import_strip ">
           <div>
-            <h2 className="title_tag">Product Add</h2>
+            <h2 className="title_tag">Product Edit</h2>
           </div>
 
           <div></div>
         </div>
         <div className="add_product_form">
-          <h2>Add Product</h2>
+          <h2> Product Edit</h2>
           <div className="product_data">
             <div className="row">
               <div className="col-lg-6">
@@ -314,7 +317,7 @@ const EditProduct = () => {
                     type="text"
                     name=""
                     id=""
-                    placeholder="Product Name "
+                    placeholder={t('productNamePlaceholder')}
                     className="input"
                     onChange={(e) => handleLocale("title", e.target.value, 0)}
                     value={locale[0].title}
@@ -328,15 +331,15 @@ const EditProduct = () => {
                       handleLocale("description", e.target.value, 0)
                     }
                     value={locale[0].description}
-                    placeholder="Write Description"
+                    placeholder={t('writeDescriptionPlaceholder')}
                   ></textarea>
-                  <button className="add_languages">Add Language</button>
+                  <button className="add_languages">{t('addLanguage')}</button>
 
                   <input
                     type="text"
                     name=""
                     id=""
-                    placeholder="Stock Code "
+                    placeholder={t('stockCodePlaceholder')}
                     className="input"
                     onChange={(e) => setStockCode(e.target.value)}
                     value={stockCode}
@@ -349,7 +352,7 @@ const EditProduct = () => {
                     onChange={(e) => setType(e.target.value)}
                     value={type}
                   >
-                    <option value="">-- Select Type --</option>
+                    <option value="">{t('selectType')}</option>
                     <option value="1">Quantity</option>
                     <option value="2">Kilogram</option>
                     <option value="3">Liter</option>
@@ -364,7 +367,7 @@ const EditProduct = () => {
                     onChange={(e) => setCategory(e.target.value)}
                     value={category}
                   >
-                    <option value="">-- Select Category --</option>
+                    <option value="">{t('selectCategory')}</option>
                     {categories.map((ele) => (
                       <option value={ele.id}>{ele.title}</option>
                     ))}
@@ -377,7 +380,7 @@ const EditProduct = () => {
                     onChange={(e) => setAllergens(e.target.value)}
                     value={allergens}
                   >
-                    <option value="">-- Select Allergens --</option>
+                    <option value="">{t('selectAllergens')}</option>
                     {allAllergens.map((ele) => (
                       <option value={ele.id}>{ele.title}</option>
                     ))}
@@ -387,7 +390,7 @@ const EditProduct = () => {
                     type="number"
                     name=""
                     id=""
-                    placeholder="Calorie"
+                    placeholder={t('caloriePlaceholder')}
                     className="input"
                     onChange={(e) => setCalories(e.target.value)}
                     value={calories}
@@ -402,7 +405,7 @@ const EditProduct = () => {
                         htmlFor="Add product to favourite products?"
                         className="mt-3"
                       >
-                        Add product to favourite products?
+                      {t('addToFavorite')}
                       </label>
                       <div>
                         <Form.Check
@@ -424,8 +427,7 @@ const EditProduct = () => {
                         htmlFor="Add product to opportunity products?"
                         className="mt-3"
                       >
-                        Add product to opportunity products?
-                      </label>
+{t('addToOpportunity')}                      </label>
                       <div>
                         <Form.Check
                           type="checkbox"
@@ -456,7 +458,7 @@ const EditProduct = () => {
                     onChange={handleImageChange}
                     ref={fileInputRef}
                   />
-                  <button onClick={openFileInput}>Change Image</button>
+                  <button onClick={openFileInput}>{t('changeImage')}</button>
                 </div>
 
                 <div className="add_opt">
@@ -471,14 +473,14 @@ const EditProduct = () => {
             </div>
 
             <label htmlFor="Active" className="mt-3 mb-3">
-              Active
+            {t('activeLabel')}
             </label>
             <div className="active_status mb-3">
               <Form.Group className=" " controlId="formBasicCheckbox3">
                 <Form.Check
                   checked={activeList && activeList.includes(1)}
                   type="checkbox"
-                  label="Waiter/Pos Odrer"
+                  label= {t('waiterPosOrder')}
                   onChange={(e) => handleActiveList(e.target.checked, 1)}
                 />
               </Form.Group>
@@ -486,7 +488,7 @@ const EditProduct = () => {
                 <Form.Check
                   checked={activeList && activeList.includes(2)}
                   type="checkbox"
-                  label="Qr Code Order"
+                  label= {t('qrCodeOrder')}
                   onChange={(e) => handleActiveList(e.target.checked, 2)}
                 />
               </Form.Group>
@@ -494,7 +496,7 @@ const EditProduct = () => {
                 <Form.Check
                   checked={activeList && activeList.includes(3)}
                   type="checkbox"
-                  label="Home delivery"
+                  label={t('homeDelivery')}
                   onChange={(e) => handleActiveList(e.target.checked, 3)}
                 />
               </Form.Group>
@@ -502,7 +504,7 @@ const EditProduct = () => {
                 <Form.Check
                   checked={activeList && activeList.includes(4)}
                   type="checkbox"
-                  label="Take away"
+                  label= {t('takeAway')}
                   onChange={(e) => handleActiveList(e.target.checked, 4)}
                 />
               </Form.Group>
@@ -510,19 +512,19 @@ const EditProduct = () => {
                 <Form.Check
                   checked={activeList && activeList.includes(5)}
                   type="checkbox"
-                  label="Case sale"
+                  label= {t('caseSale')}
                   onChange={(e) => handleActiveList(e.target.checked, 5)}
                 />
               </Form.Group>
             </div>
             <button className="add_p_btn" onClick={handleAddPrice}>
-              Add Price type
+            {t('addPriceType')}
             </button>
 
             {prices.map((ele, index) => (
               <div className="price_added_link" key={index}>
                 <div className="add_pricing_inpt">
-                  <label htmlFor="Price Name">Price Name</label>
+                  <label htmlFor="Price Name">{t('priceNameLabel')}</label>
                   <input
                     type="text"
                     name={`priceName-${index}`}
@@ -536,7 +538,7 @@ const EditProduct = () => {
                 </div>
 
                 <div className="add_pricing_inpt">
-                  <label htmlFor="Price Name">Listing Name</label>
+                  <label htmlFor="Price Name"> {t('listingNameLabel')}</label>
                   <select
                     name="Take way"
                     id=""
@@ -554,7 +556,7 @@ const EditProduct = () => {
                 </div>
 
                 <div className="add_pricing_inpt">
-                  <label htmlFor="Price Name">Quanity</label>
+                  <label htmlFor="Price Name"> {t('quantityLabel')}</label>
                   <br />
                   <div className="increaser_decreaser" key={index}>
                     <button onClick={() => increaseQuantity(index)}>+</button>
@@ -567,7 +569,7 @@ const EditProduct = () => {
                 </div>
 
                 <div className="add_pricing_inpt">
-                  <label htmlFor="Price">Price</label>
+                  <label htmlFor="Price"> {t('priceLabel')}</label>
                   <input
                     type="number"
                     placeholder={ele.price.toString()}
@@ -579,7 +581,7 @@ const EditProduct = () => {
                 </div>
 
                 <div className="add_pricing_inpt">
-                  <label htmlFor="Price Name">Currency</label>
+                  <label htmlFor="Price Name"> {t('currencyLabel')}</label>
                   <select
                     name="Take way"
                     id=""
@@ -595,7 +597,7 @@ const EditProduct = () => {
                   </select>
                 </div>
                 <div className="add_pricing_inpt">
-                  <label htmlFor="Price">VAT</label>
+                  <label htmlFor="Price"> {t('vatLabel')}</label>
                   <input
                     type="number"
                     // value={getPriceDetails('vat', index)}
@@ -628,7 +630,8 @@ const EditProduct = () => {
             ))}
 
             <button className="saved_product" onClick={handleSave}>
-              Save
+            {t('saveProduct')}
+
             </button>
           </div>
 

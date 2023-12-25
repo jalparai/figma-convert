@@ -11,8 +11,11 @@ import { Button } from "react-bootstrap";
 import LongMenu from "./three-dots-vertical-menu";
 import { CircularProgress } from "@mui/material";
 import EditAbleTableCell from "./EditAbleTableCell";
+import { useTranslation } from 'react-i18next';
 
 const EditRankProductTable = ({ products }: any) => {
+  const { t } = useTranslation();
+
   return (
     <TableContainer component={Paper} className="product">
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -20,7 +23,7 @@ const EditRankProductTable = ({ products }: any) => {
           <TableRow className="th_hds" style={{ backgroundColor: "#fe7f7f" }}>
             <TableCell align="left" style={{ width: "100px", padding: "7px" }}>
               <div className="edit_rank_th">
-                <h5>Rank</h5>
+                <h5>{t('rank')}</h5>
                 <div className="d-flex">
                   <Button>
                     {/* <svg

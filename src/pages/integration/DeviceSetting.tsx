@@ -2,6 +2,7 @@ import React from "react";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import "../../asserts/css/integration.css";
+import { useTranslation } from 'react-i18next';
 
 const style = {
   position: "absolute" as "absolute",
@@ -23,6 +24,7 @@ const DeviceSetting = () => {
   const handleClose = async () => {
     setOpen(false);
   };
+  const { t } = useTranslation();
 
   return (
     <div>
@@ -30,7 +32,7 @@ const DeviceSetting = () => {
         className="product_add add_opt_btn add_cat_opt"
         onClick={handleOpen}
       >
-        Device Setting
+{t('devicesetting')}
         <svg
           width="24"
           height="24"
@@ -72,21 +74,21 @@ const DeviceSetting = () => {
             </svg>
           </button>
           <div className="device_setting_modal">
-            <h4>Device Setting</h4>
+            <h4>{t('devicesetting')} </h4>
 
             <input
               type="text"
               name=""
               id=""
-              placeholder="  Tilte "
+              placeholder={t('title')}
               className="input"
             />
 
-            <button className="btn_to_add_list mt-3">Save</button>
+            <button className="btn_to_add_list mt-3">{t('save')}</button>
 
-            <p>No added device found</p>
+            <p>{t('noAddedDeviceFound')}</p>
           </div>
-          <button className="cancel_btn">Cancel</button>
+          <button className="cancel_btn">{t('cancel')}</button>
         </Box>
       </Modal>
     </div>

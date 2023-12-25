@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Userstable from "../../components/users-table";
 import UserAdd from "../../components/user-add-popup";
 import { getAllUsers } from "./api";
-
+import { useTranslation } from "react-i18next";
 interface IUser {
   id: string;
   lastName: string;
@@ -27,6 +27,7 @@ const Users = () => {
   useEffect(() => {
     fetchData();
   }, []);
+  const { t } = useTranslation();
 
   return (
     <>
@@ -34,7 +35,7 @@ const Users = () => {
         <div className="import_strip ">
           <div>
             <h2 className="title_tag">
-              Employee List
+            {t("employeeList")}
             </h2>
           </div>
           <div className="d-flex">
