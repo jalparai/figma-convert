@@ -292,7 +292,7 @@ const Sidebar: React.FC<SidebarProps> = ({ mobileOpen, setMobileOpen }) => {
           window.location.reload();
         }}
       >
-        Logout
+        {t('logout')}
         <span className="svg_cont">
           <LogoutIcon />
         </span>

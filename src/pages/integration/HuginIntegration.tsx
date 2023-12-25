@@ -6,6 +6,7 @@ import { CircularProgress } from "@mui/material";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { updateDepartmentCode } from "./api";
+import { useTranslation } from 'react-i18next';
 
 interface FormValues {
   departmentCode: string;
@@ -43,20 +44,21 @@ const HuginIntegration = () => {
   const filteredProducts = products.filter((product: any) =>
     product.name.toLowerCase().includes(formik.values.search.toLowerCase())
   );
+  const { t } = useTranslation();
 
   return (
     <>
       <div className="hugin_integration">
         <div className="import_strip ">
           <div>
-            <h2 className="title_tag">Hugin Integration</h2>
+            <h2 className="title_tag">{t('huginIntegration')}</h2>
           </div>
           <div className="d-flex">
             <DeviceSetting />
           </div>
         </div>
         <form className="department_code" onSubmit={formik.handleSubmit}>
-          <h4>Department Code:</h4>
+          <h4> {t('departmentCode')}</h4>
           <select
             name="departmentCode"
             id="departmentCode"
@@ -101,7 +103,7 @@ const HuginIntegration = () => {
         />
       </div>
           <button className="device_btn" type="submit">
-            Save Integration
+          {t('saveIngeration')}
           </button>
         </form>
       </div>

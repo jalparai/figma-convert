@@ -166,7 +166,7 @@ export default function CategoryAdd() {
         className="product_add add_opt_btn add_cat_opt"
         onClick={handleOpen}
       >
-        {t("addOption")}
+        {t("addCategory")}
 
         <svg
           width="24"
@@ -205,7 +205,7 @@ export default function CategoryAdd() {
             </svg>
           </button>
           <div className="add_option_style">
-            <h4> {t("addOption")}</h4>
+            <h4> {t("addCategory")}</h4>
             <div className="cate_img">
               {/* {product.category.image && (
               <img
@@ -287,7 +287,7 @@ export default function CategoryAdd() {
                 className="input"
               />
             </div>
-            <button className="btn_to_add_list mt-3">Add Language</button>
+            <button className="btn_to_add_list mt-3"> {t("addLanguage")}</button>
             <select
               name="parentCategorySelect"
               className="add_language"
@@ -301,7 +301,7 @@ export default function CategoryAdd() {
             </select>
           </div>
           <button className="saved_product" onClick={handleSave}>
-            Save
+          {t("save")}
           </button>
         </Box>
       </Modal>

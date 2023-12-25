@@ -10,6 +10,8 @@ import DeleteMod from "./delete-btn";
 import CircularProgress from "@mui/material/CircularProgress";
 import "../asserts/css/category.css";
 import UserUpdate from "./user-update-popup";
+import { useTranslation } from "react-i18next";
+
 
 interface User {
   id: string;
@@ -23,14 +25,16 @@ interface UserProps {
 }
 
 const Userstable: React.FC<UserProps> = ({ data }) => {
+  const { t } = useTranslation();
+
   return (
     <TableContainer component={Paper} className="product">
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow className="th_hds">
-            <TableCell align="center">EMPLOYEE</TableCell>
-            <TableCell align="center">CREATION DATE</TableCell>
-            <TableCell align="center">Setting</TableCell>
+            <TableCell align="center">{t("employee")}</TableCell>
+            <TableCell align="center">{t("creationdate")}</TableCell>
+            <TableCell align="center">{t("settingHeaderText")}</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

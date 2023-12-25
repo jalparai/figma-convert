@@ -84,7 +84,7 @@ const CaseSelect = () => {
                 </div>
                 <ul>
                   <li>Total</li>
-                  <li>{caseData?.balance[0].amount} {caseData?.balance[0].currency}</li>
+                  {/* <li>{caseData?.balance[0].amount} {caseData?.balance[0].currency}</li> */}
                 </ul>
               </div>
             </div>

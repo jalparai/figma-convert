@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { getAllCategories } from "../../pages/categorey/api";
 import Categoreytable from "../../components/categorey-table";
 import CategoryAdd from "../../components/add-category-popup";
+import { useTranslation } from 'react-i18next';
 
 interface Categories {
   id: string;
@@ -62,12 +63,14 @@ const Category = () => {
   useEffect(() => {
     fetchData();
   }, []);
+  const { t } = useTranslation();
+
   return (
     <>
       <div>
         <div className="import_strip ">
           <div>
-            <h2 className="title_tag">Category List</h2>
+            <h2 className="title_tag"> {t('catergoryListt')} </h2>
           </div>
           <div className="d-flex">
             <Button
@@ -75,7 +78,7 @@ const Category = () => {
               className="product_add edit_rant_btn"
               onClick={handleButtonClick}
             >
-              Edit Rank
+            {t('editRankButtonText')} 
             </Button>
             <CategoryAdd />
           </div>
