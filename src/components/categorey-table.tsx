@@ -36,7 +36,6 @@ const Categoreytable: React.FC<CategoryProps> = ({
   const [filteredData, setFilteredData] = useState<Categories[]>([]);
 
   useEffect(() => {
-    // Filter data based on the search input
     const filtered = data.filter((item) =>
       item.title.toLowerCase().includes(searchInput.toLowerCase())
     );

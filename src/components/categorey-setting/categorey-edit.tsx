@@ -1,7 +1,8 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
-import { useFormik } from "formik";
+import { FormikConfig, useFormik } from "formik";
+import { produce } from "immer";
 
 import "../../asserts/css/product.css";
 import "../../asserts/css/delete-popup.css";
@@ -35,96 +36,87 @@ interface FormValues {
     parent_category: string;
   };
   lang: {
+    itemId: string;
     locale: any[];
   };
 }
+interface CustomFormikConfig<FormValues> extends FormikConfig<FormValues> {
+  handleChange?: (field: string, value: any) => void;
+}
+
 const CategoryEdit: React.FC<{ categoryId: string }> = ({ categoryId }) => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const [data, setData] = React.useState<any>();
+  const [isLoading, setIsLoading] = React.useState(true);
   const [categories, setCategories] = React.useState<Category[]>([]);
-  const [formValues, setFormValues] = React.useState<FormValues>({
-    imageFile: null,
-    category: {
-      title: "",
-      parent_category: "",
-    },
-    lang: {
-      locale: [],
-    },
-  });
 
   const formik = useFormik({
-    initialValues: formValues,
-    onSubmit: async (values) => {
+    initialValues: {
+      imageFile: null,
+      category: {
+        title: "",
+        parent_category: "",
+      },
+      lang: {
+        itemId: "",
+        locale: [{ title: "", lang: "en" }],
+      },
+    } as FormValues,
+    handleChange: (field: string, value: any) => {
+      if (field === "lang.locale[0].title") {
+        formik.setFieldValue("category.title", value);
+      } else {
+        formik.setFieldValue(field, value);
+      }
+    },
+    onSubmit: async (values: any) => {
       console.log("values", values);
       await updateCategoryById(categoryId, values);
+      window.location.reload()
       handleClose();
     },
     enableReinitialize: true,
-  });
-  // const fetchCategories = async () => {
-  //   const allCategories = await getAllCategories();
-  //   setData(allCategories)
-  // };
-  // const fetchCategory = async (catId: string) => {
-  //   const responseData = await getCategoryById(catId);
-  //   console.log("responseData", responseData);
-  //   setData(responseData);
-  //   formik.setValues({
-  //     ...formik.values,
-  //     category: responseData,
-  //     lang: { locale: [{ title: responseData.title, lang: "en" }] },
-  //   });
-  // };
+  }  as CustomFormikConfig<FormValues>);
 
-  // const handleAddLanguage = async () => {
-  //   setFormValues((prevValues: any) => ({
-  //     ...prevValues,
-  //     lang: {
-  //       ...prevValues.lang,
-  //       locale: [...prevValues.lang.locale, { title: "", lang: "en" }],
-  //     },
-  //   }));
-  //   formik.setFieldValue("lang.locale[-1].title", "");
-  // };
   React.useEffect(() => {
     const fetchData = async () => {
+      setIsLoading(true);
       const category = await getCategoryById(categoryId);
       const allCategories = await getAllCategories();
       setData(category);
-      // setFormValues({
-      //   category,
-      //   lang: { locale: [{ title: category.title, lang: "en" }] },
-      // });
-      // formik.setValues({
-      //   ...formik.values,
-      //   category: category,
-      //   lang: { locale: [{ title: category.title, lang: 'en' }] },
-      // });
+      formik.setValues({
+        ...formik.values,
+        category,
+        lang: {
+          itemId: category._id,
+          locale: [
+            { title: category.title, lang: category?.locale?.lang ?? "en" },
+          ],
+        },
+      });
       setCategories(allCategories);
+      setIsLoading(false);
     };
     fetchData();
   }, []);
 
   const handleAddLanguage = () => {
-    setFormValues((prevValues: any) => ({
-      ...prevValues,
-      lang: {
-        ...prevValues.lang,
-        locale: [...prevValues.lang.locale, { title: "", lang: "en" }],
-      },
-    }));
-    // Focus on the newly added language input
-    // const lastInput = document.querySelector(
-    //   `[name="lang.locale[${formik.values.lang.locale.length - 1}].title"]`
-    // );
-    // if (lastInput) {
-    //   lastInput?.focus();
-    // }
+    formik.setValues(
+      produce(formik.values, (draft: any) => {
+        draft.lang.locale.push({ title: "", lang: "en" });
+      })
+    );
   };
 
+  const handleRemoveLanguage = (index: number) => {
+    formik.setValues(
+      produce(formik.values, (draft: any) => {
+        draft.lang.locale.splice(index, 1);
+      })
+    );
+  };
   return (
     <div>
       <button className="product_add add_opt_btn" onClick={handleOpen}>
@@ -209,48 +201,51 @@ const CategoryEdit: React.FC<{ categoryId: string }> = ({ categoryId }) => {
                   }}
                 />{" "}
               </div>
-              <div className="cateory_add_field">
-                <select name="language" id="language" className="add_language">
-                  <option value="en">English</option>
-                  <option value="tr">Turkish</option>
-                </select>
-                <input
-                  type="text"
-                  id="title"
-                  name="category.title"
-                  onChange={formik.handleChange}
-                  value={formik.values?.category?.title}
-                  placeholder="category Tilte"
-                  className="input"
-                />
-              </div>
-              {formValues.lang?.locale.length > 1 &&
-                formik.values.lang.locale.map((lang: any, index: number) => (
-                  <div className="cateory_add_field">
-                    <select
-                      name="language"
-                      id="language"
-                      className="add_language"
-                    >
-                      <option value="en">English</option>
-                      <option value="tr">Turkish</option>
-                    </select>
-                    <input
-                      type="text"
-                      id={`category[${index + 1}].title`}
-                      name={`category[${index + 1}].title`}
-                      onChange={formik.handleChange}
-                      value={formik.values?.lang.locale[index + 1]?.title}
-                      placeholder="Category Tilte"
-                      className="input"
-                    />
-                  </div>
-                ))}
-
+              {formik.values.lang.locale.map((lang: any, index: number) => (
+                <div className="cateory_add_field">
+                  <select
+                    className="add_language"
+                    name={`lang.locale[${index}].lang`}
+                    value={formik.values.lang.locale[index].lang}
+                    onChange={formik.handleChange}
+                  >
+                    <option value="en">English</option>
+                    <option value="tr">Turkish</option>
+                  </select>
+                  <input
+                    type="text"
+                    id={`lang.locale[${index}].title`}
+                    name={`lang.locale[${index}].title`}
+                    // onChange={formik.handleChange}
+                    value={formik.values?.lang.locale[index]?.title}
+                    onChange={(e) => {
+                      const { name, value } = e.target;
+                      if (name === "lang.locale[0].title") {
+                        formik.setFieldValue("category.title", value);
+                      }
+                      formik.handleChange(e)
+                    }}
+                    placeholder="Category Tilte"
+                    className="input"
+                  />
+                  {index !== 0 && (
+                    <div>
+                      <button
+                        type="button"
+                        className="btn_to_add_list mt-3"
+                        onClick={() => handleRemoveLanguage(index)}
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  )}
+                </div>
+              ))}
               <button
                 className="btn_to_add_list mt-3"
                 type="button"
                 onClick={handleAddLanguage}
+                disabled={isLoading}
               >
                 Add Language
               </button>
@@ -266,7 +261,11 @@ const CategoryEdit: React.FC<{ categoryId: string }> = ({ categoryId }) => {
                 ))}
               </select>
             </div>
-            <button className="saved_product" type="submit">
+            <button
+              className="saved_product"
+              type="submit"
+              disabled={isLoading}
+            >
               Save
             </button>
           </form>

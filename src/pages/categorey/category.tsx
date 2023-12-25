@@ -6,15 +6,6 @@ import { getAllCategories } from "../../pages/categorey/api";
 import Categoreytable from "../../components/categorey-table";
 import CategoryAdd from "../../components/add-category-popup";
 
-interface Categories {
-  id: string;
-  title: string;
-  isSubCategory: string;
-  rank: string;
-  image: string;
-  createdAt: string;
-}
-
 const convertToCSV = (data: any[]) => {
   const header = Object.keys(data[0]).join(",");
   const csv = data.map((row) => Object.values(row).join(",")).join("\n");
@@ -36,7 +27,6 @@ const downloadCSV = (data: any[]) => {
 
 const Category = () => {
   const [data, setData] = useState([]);
-  const [categories, setCategories] = useState<Categories[]>([]);
 
   const exportProducts = () => {
     downloadCSV(data);
